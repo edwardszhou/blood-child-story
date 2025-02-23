@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;700;900&display=swap');
+@import 'tailwindcss';
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+@theme {
+  --color-grayscale-0: rgba(255, 255, 255, 1);
+  --color-grayscale-20: rgba(245, 245, 245, 1);
+  --color-grayscale-40: rgba(199, 200, 205, 1);
+  --color-grayscale-60: rgba(122, 122, 122, 1);
+  --color-grayscale-80: rgba(31, 31, 31, 1);
+  --color-grayscale-100: rgba(0, 0, 0, 1);
+  --color-primary-light: rgba(214, 255, 246, 1);
+  --color-primary: rgba(2, 173, 170, 1);
+  --color-primary-dark: rgba(5, 60, 94, 1);
+  --color-secondary: rgba(254, 215, 102, 1);
+  --color-destructive: rgba(222, 78, 67, 1);
+  --color-destructive-foreground: rgba(240, 108, 98, 1);
+}
