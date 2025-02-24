@@ -1,30 +1,59 @@
-import { useState } from 'react';
+import Layout from '@/Layout';
+import BramLomas from '@/routes/BramLomas';
+import Home from '@/routes/Home';
+import Innocence from '@/routes/Innocence';
+import Mother from '@/routes/Mother';
+import Power from '@/routes/Power';
+import Protection from '@/routes/Protection';
+import Qui from '@/routes/Qui';
+import TGatoi from '@/routes/TGatoi';
+import XuanHoa from '@/routes/XuanHoa';
+import { Route, Routes } from 'react-router-dom';
 
-function App() {
-  const [count, setCount] = useState(0);
-
+export default function App() {
   return (
-    <>
-      <div>
-        <a
-          href="https://vite.dev"
-          target="_blank"
-        ></a>
-        <a
-          href="https://react.dev"
-          target="_blank"
-        ></a>
-      </div>
-      <h1 className="text-primary text-xl">Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </>
+    <Routes>
+      <Route
+        path="/"
+        element={<Layout />}
+      >
+        <Route
+          index
+          element={<Home />}
+        />
+        <Route
+          path="innocence"
+          element={<Innocence />}
+        />
+        <Route
+          path="mother"
+          element={<Mother />}
+        />
+        <Route
+          path="t-gatoi"
+          element={<TGatoi />}
+        />
+        <Route
+          path="bram-lomas"
+          element={<BramLomas />}
+        />
+        <Route
+          path="qui"
+          element={<Qui />}
+        />
+        <Route
+          path="xuan-hoa"
+          element={<XuanHoa />}
+        />
+        <Route
+          path="protection"
+          element={<Protection />}
+        />
+        <Route
+          path="power"
+          element={<Power />}
+        />
+      </Route>
+    </Routes>
   );
 }
-
-export default App;
