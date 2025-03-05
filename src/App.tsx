@@ -10,6 +10,7 @@ import Qui from '@/routes/Qui';
 import TGatoi from '@/routes/TGatoi';
 import XuanHoa from '@/routes/XuanHoa';
 import { Route, Routes } from 'react-router-dom';
+import Intro from './routes/Intro';
 
 export default function App() {
   return (
@@ -21,6 +22,10 @@ export default function App() {
         >
           <Route
             index
+            element={<Intro />}
+          />
+          <Route
+            path="home"
             element={<Home />}
           />
           <Route
