@@ -1,6 +1,13 @@
 import { StoryContext } from '@/lib/StoryContext';
 import { cn } from '@/lib/utils';
-import { useContext, useState, type HTMLAttributes, type ReactNode } from 'react';
+import {
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+  type HTMLAttributes,
+  type ReactNode
+} from 'react';
 
 function sparseMerge(arr: string[]) {
   const result = [];
@@ -28,12 +35,36 @@ function HighlightSpan({
   unhoverClassName?: string;
 } & HTMLAttributes<HTMLSpanElement>) {
   const [hovered, setHovered] = useState(false);
+  const spanRef = useRef<HTMLSpanElement>(null);
   const { phase } = useContext(StoryContext);
+
+  useEffect(() => {
+    const handleMouseMove = (e: any) => {
+      if (!spanRef.current) return;
+
+      const elementRect = spanRef.current.getBoundingClientRect();
+      const distance = Math.sqrt(
+        Math.pow(e.clientX - (elementRect.left + elementRect.width / 2), 2) +
+          Math.pow(e.clientY - (elementRect.top + elementRect.height / 2), 2)
+      );
+
+      if (distance < 50) {
+        setHovered(true);
+        window.removeEventListener('mousemove', handleMouseMove);
+      }
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
 
   return (
     <span
+      ref={spanRef}
       onMouseOver={(e) => {
-        setHovered(true);
+        // setHovered(true);
         onMouseOver?.(e);
       }}
       className={cn(
