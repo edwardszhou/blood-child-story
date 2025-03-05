@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&family=Reenie+Beanie&family=Rock+Salt&display=swap');
 @import 'tailwindcss';
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    font-family: 'Poiret One';
   }
 }
 
@@ -18,16 +19,19 @@
 }
 
 @theme {
-  --color-grayscale-0: rgba(255, 255, 255, 1);
-  --color-grayscale-20: rgba(245, 245, 245, 1);
-  --color-grayscale-40: rgba(199, 200, 205, 1);
-  --color-grayscale-60: rgba(122, 122, 122, 1);
-  --color-grayscale-80: rgba(31, 31, 31, 1);
-  --color-grayscale-100: rgba(0, 0, 0, 1);
-  --color-primary-light: rgba(214, 255, 246, 1);
-  --color-primary: rgba(2, 173, 170, 1);
-  --color-primary-dark: rgba(5, 60, 94, 1);
-  --color-secondary: rgba(254, 215, 102, 1);
-  --color-destructive: rgba(222, 78, 67, 1);
-  --color-destructive-foreground: rgba(240, 108, 98, 1);
+  --color-grayscale-0: #eef0f2;
+  --color-grayscale-25: #c8cacb;
+  --color-grayscale-50: #7c7d7e;
+  --color-grayscale-75: #303030;
+  --color-grayscale-100: #0a0a0a;
+  --color-primary-light: #b28288;
+  --color-primary-dark: #6b0f1a;
+  --color-secondary-light: #523043;
+  --color-secondary-dark: #31081f;
+  --font-default: 'Rock Salt', cursive;
+  --font-emphasis: 'Rock Salt', cursive;
+  --font-thought: 'Reenie Beanie', cursive;
+  --font-default: 'Poiret One', sans-serif;
+
+  --blur-xxs: 2px;
 }
