@@ -46,7 +46,7 @@ function HighlightSpan({
               phase >= 2 && 'text-primary-light',
               hoverClassName
             )
-          : cn('blur-xxs', unhoverClassName)
+          : (unhoverClassName ?? 'blur-xxs')
       )}
       {...props}
     >

@@ -14,7 +14,7 @@ import Intro from './routes/Intro';
 
 export default function App() {
   return (
-    <StoryContextProvider initialPhase={0}>
+    <StoryContextProvider initialPhase={1}>
       <Routes>
         <Route
           path="/"

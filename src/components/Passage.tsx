@@ -15,8 +15,8 @@ export default function Passage({
   return (
     <div
       className={cn(
-        'w-[48rem] text-3xl tracking-wider opacity-0 transition-opacity duration-[3000ms] select-none',
-        fadedIn && 'opacity-100',
+        'pointer-events-none w-[48rem] text-3xl tracking-wider opacity-0 transition-opacity duration-[3000ms] select-none',
+        fadedIn && 'pointer-events-auto opacity-100',
         className
       )}
       {...props}

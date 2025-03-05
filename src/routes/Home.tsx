@@ -79,7 +79,34 @@ function SecondHome() {
   );
 }
 
+function ThirdHome() {
+  return (
+    <Passage className="flex flex-col gap-16">
+      <HighlightText
+        text={`I feel the faint scar of my puncture wound from three days ago. T’Gatoi was holding me in her
+      limbs still, as before. But who I am is not as before. Nor who T’Gatoi is to me.`}
+        hoverClassName="text-grayscale-100"
+      />
+      <div>
+        <HighlightText
+          text={`I was not ready that day, when the door opened. I didn’t know what I would be on the other
+      side of what seemed like a regular day then. `}
+          inline
+          hoverClassName="text-grayscale-100"
+        />
+        <HighlightText
+          text={`Today, I know that my last night of childhood
+      began with a visit home.`}
+          inline
+          highlightAll
+          hoverClassName="text-primary-dark"
+        />
+      </div>
+    </Passage>
+  );
+}
+
 export default function Home() {
   const { phase } = useContext(StoryContext);
-  return phase === 1 ? <FirstHome /> : <SecondHome />;
+  return phase === 1 ? <FirstHome /> : phase === 2 ? <SecondHome /> : <ThirdHome />;
 }

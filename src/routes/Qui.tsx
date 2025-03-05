@@ -59,6 +59,7 @@ him question reality, made me question reality at that moment. I didn’t want t
         text={`I hit him.`}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
+        unhoverClassName="blur-md"
         hoverClassName={cn('text-grayscale-0', progress > 0.3 && 'text-grayscale-100')}
         className={cn(
           'tran font-emphasis absolute bottom-48 left-1/2 z-20 -translate-x-1/2 text-3xl tracking-wider opacity-0 select-none',
@@ -69,33 +70,34 @@ him question reality, made me question reality at that moment. I didn’t want t
     </>
   );
 }
-export default function Qui() {
-  const { phase } = useContext(StoryContext);
-  usePhaseWall(1);
 
-  return phase === 1 ? (
-    <FirstQui />
-  ) : phase === 2 ? (
-    <SecondQui />
-  ) : (
-    <Passage>
-      <div className="font-thought">
+function ThirdQui() {
+  return (
+    <Passage className="font-thought flex flex-col gap-16">
+      <HighlightText text="I’m not Qui. Not today, not then, not before." />
+      <div>
         <HighlightText
           inline
-          text={`I remember that I used to be close with Qui. Not anymore. I remembered that I always wondered why he suddenly grew distant, why he suddenly grew to fear T’Gatoi. Like with my `}
+          text="But something that day made me feel"
         />
-        <Link to={'/mother'}>
+        <Link to={'/protection'}>
           <HighlightText
             inline
-            text={`mother,`}
-            hoverClassName={'tracking-widest text-primary-light'}
+            text="uneasy "
+            hoverClassName="text-primary-dark"
           />
         </Link>
         <HighlightText
           inline
-          text={`there was something that happened.`}
+          text="around T’Gatoi the same way Qui did."
         />
       </div>
     </Passage>
   );
+}
+export default function Qui() {
+  const { phase } = useContext(StoryContext);
+  usePhaseWall(1);
+
+  return phase === 1 ? <FirstQui /> : phase === 2 ? <SecondQui /> : <ThirdQui />;
 }

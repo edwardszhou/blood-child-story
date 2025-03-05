@@ -24,10 +24,11 @@ export default function Layout() {
         className={cn(
           'from-grayscale-0 to-grayscale-25 text-grayscale-75 flex min-h-screen max-w-screen items-center justify-center bg-gradient-to-b',
           phase === 1 && 'from-grayscale-100 to-grayscale-75 bg-gradient-to-b',
-          phase === 2 && 'bg-secondary-dark',
-          phase === 3 && 'bg-primary-dark',
-          location.pathname === '/home' &&
-            'from-grayscale-0 to-grayscale-25 text-grayscale-75 bg-gradient-to-b'
+          phase === 2 && 'bg-primary-dark',
+          phase === 3 && 'bg-secondary-dark',
+          (location.pathname === '/home' || location.pathname === '/') &&
+            'from-grayscale-0 to-grayscale-25 text-grayscale-75 bg-gradient-to-b',
+          location.pathname === '/power' && 'bg-grayscale-100'
         )}
       >
         <Outlet />
