@@ -13,7 +13,7 @@ import { Route, Routes } from 'react-router-dom';
 
 export default function App() {
   return (
-    <StoryContextProvider initialPhase={1}>
+    <StoryContextProvider initialPhase={0}>
       <Routes>
         <Route
           path="/"

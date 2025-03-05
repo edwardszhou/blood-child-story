@@ -21,7 +21,8 @@ export default function Layout() {
     <>
       <div
         className={cn(
-          'from-grayscale-100 to-grayscale-75 text-grayscale-50 flex min-h-screen max-w-screen items-center justify-center bg-gradient-to-b',
+          'from-grayscale-0 to-grayscale-25 text-grayscale-75 flex min-h-screen max-w-screen items-center justify-center bg-gradient-to-b',
+          phase === 1 && 'from-grayscale-100 to-grayscale-75 bg-gradient-to-b',
           phase === 2 && 'bg-secondary-dark',
           phase === 3 && 'bg-primary-dark'
         )}

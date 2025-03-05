@@ -34,4 +34,60 @@
   --font-default: 'Poiret One', sans-serif;
 
   --blur-xxs: 2px;
+
+  --animate-floating-1: floating-1 10s ease-in-out infinite;
+  --animate-floating-2: floating-2 10s ease-in-out infinite;
+  --animate-floating-3: floating-3 10s ease-in-out infinite;
+
+  @keyframes floating-1 {
+    0% {
+      transform: translate(0%, 0%);
+    }
+    25% {
+      transform: translate(5%, 15%);
+    }
+    50% {
+      transform: translate(10%, 5%);
+    }
+    75% {
+      transform: translate(0%, 15%);
+    }
+    100% {
+      transform: translate(0%, 0%);
+    }
+  }
+  @keyframes floating-2 {
+    0% {
+      transform: translate(10%, 5%);
+    }
+    25% {
+      transform: translate(5%, 15%);
+    }
+    50% {
+      transform: translate(0%, 0%);
+    }
+    75% {
+      transform: translate(0%, 15%);
+    }
+    100% {
+      transform: translate(10%, 5%);
+    }
+  }
+  @keyframes floating-3 {
+    0% {
+      transform: translate(5%, 15%);
+    }
+    25% {
+      transform: translate(10%, 5%);
+    }
+    50% {
+      transform: translate(0%, 0%);
+    }
+    75% {
+      transform: translate(0%, 15%);
+    }
+    100% {
+      transform: translate(5%, 15%);
+    }
+  }
 }
