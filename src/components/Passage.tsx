@@ -1,13 +1,11 @@
 import { cn } from '@/lib/utils';
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useState, type HTMLAttributes, type PropsWithChildren } from 'react';
 
 export default function Passage({
   className,
-  children
-}: {
-  className?: string;
-  children: ReactNode;
-}) {
+  children,
+  ...props
+}: PropsWithChildren<HTMLAttributes<HTMLDivElement>>) {
   const [fadedIn, setFadedIn] = useState(false);
 
   useEffect(() => {
@@ -21,6 +19,7 @@ export default function Passage({
         fadedIn && 'opacity-100',
         className
       )}
+      {...props}
     >
       {children}
     </div>

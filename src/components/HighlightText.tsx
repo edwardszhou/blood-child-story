@@ -1,5 +1,18 @@
+import { StoryContext } from '@/lib/StoryContext';
 import { cn } from '@/lib/utils';
-import { useState, type HTMLAttributes, type ReactNode } from 'react';
+import { useContext, useState, type HTMLAttributes, type ReactNode } from 'react';
+
+function sparseMerge(arr: string[]) {
+  const result = [];
+  for (let i = 0; i < arr.length; i += 3) {
+    let merged = '';
+    for (let j = i; j < i + 3 && j < arr.length; j++) {
+      merged += `${arr[j]} `;
+    }
+    result.push(merged);
+  }
+  return result;
+}
 
 function HighlightSpan({
   children,
@@ -15,6 +28,7 @@ function HighlightSpan({
   unhoverClassName?: string;
 } & HTMLAttributes<HTMLSpanElement>) {
   const [hovered, setHovered] = useState(false);
+  const { phase } = useContext(StoryContext);
 
   return (
     <span
@@ -25,7 +39,14 @@ function HighlightSpan({
       className={cn(
         'text-grayscale-50 transition-all duration-1000',
         className,
-        hovered ? cn('text-grayscale-0', hoverClassName) : cn('blur-xxs', unhoverClassName)
+        hovered
+          ? cn(
+              phase === 0 && 'text-grayscale-100',
+              phase === 1 && 'text-grayscale-0',
+              phase >= 2 && 'text-primary-light',
+              hoverClassName
+            )
+          : cn('blur-xxs', unhoverClassName)
       )}
       {...props}
     >
@@ -33,6 +54,7 @@ function HighlightSpan({
     </span>
   );
 }
+
 export default function HighlightText({
   text,
   className,
@@ -40,6 +62,7 @@ export default function HighlightText({
   hoverClassName,
   unhoverClassName,
   inline = false,
+  highlightAll = false,
   ...props
 }: {
   text: string;
@@ -48,12 +71,23 @@ export default function HighlightText({
   hoverClassName?: string;
   unhoverClassName?: string;
   inline?: boolean;
+  highlightAll?: boolean;
 } & HTMLAttributes<HTMLSpanElement>) {
   const stringArr = text.split(/(\s+)/).filter((e) => e.trim().length > 0);
+  const sparseStringArr = sparseMerge(stringArr);
 
-  return inline ? (
-    <>
-      {stringArr.map((str, i) => (
+  const renderText = () => {
+    return highlightAll ? (
+      <HighlightSpan
+        className={className}
+        hoverClassName={hoverClassName}
+        unhoverClassName={unhoverClassName}
+        {...props}
+      >
+        {text}
+      </HighlightSpan>
+    ) : (
+      sparseStringArr.map((str, i) => (
         <HighlightSpan
           key={i}
           className={className}
@@ -63,20 +97,9 @@ export default function HighlightText({
         >
           {str}{' '}
         </HighlightSpan>
-      ))}
-    </>
-  ) : (
-    <div className={containerClassName}>
-      {stringArr.map((str, i) => (
-        <HighlightSpan
-          key={i}
-          className={className}
-          hoverClassName={hoverClassName}
-          unhoverClassName={unhoverClassName}
-        >
-          {str}{' '}
-        </HighlightSpan>
-      ))}
-    </div>
-  );
+      ))
+    );
+  };
+
+  return inline ? <>{renderText()}</> : <div className={containerClassName}>{renderText()}</div>;
 }
